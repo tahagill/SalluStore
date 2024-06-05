@@ -1,5 +1,5 @@
 const hhSearchInput = document.querySelector('#hhSearchInput');
-const hhProContainer = document.querySelector('#hhProContainer');
+const hhSearchResult = document.querySelector('.hh-search-dropdown');
 
 let allProducts = [];
 
@@ -18,34 +18,29 @@ hhSearchInput.addEventListener("keyup", () => {
         return product.title.toLowerCase().includes(searchText);
     });
 
-    renderProducts(filteredProducts, searchText);  
+    renderProducts(filteredProducts, searchText);
 });
 
 function renderProducts(products, searchText) {
+    if (searchText === "") {
+        hhSearchResult.innerHTML = '';
+        return;
+    }
+
     if (products.length === 0) {
-        hhProContainer.innerHTML = '<p>Ürün bulunamadı.</p>';
+        hhSearchResult.innerHTML = '<p>Ürün bulunamadı.</p>';
         return;
     }
 
     const productsHTML = products.map((product) => {
-       return `
+        return `
             <div class="product">
                 <img src="${product.image}">  
                 <h3>${product.title}</h3>
-                <p>${product.description}</p>
-                <p>${product.price}</p>
+                <p>$${product.price}</p>
             </div>
         `;
     }).join('');
-   
-    hhProContainer.innerHTML = productsHTML;
 
-    
-    const hhSearchResult = document.querySelector('#hhSearchResult');
-    hhSearchResult.textContent = searchText;
-
-    if (searchText === "") {
-        hhProContainer.innerHTML = ''; 
-        hhSearchResult.textContent = ''; 
-    }
+    hhSearchResult.innerHTML = productsHTML;
 }
