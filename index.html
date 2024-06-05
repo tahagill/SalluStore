@@ -56,17 +56,13 @@
       </div>
       <div class="hh-nav-line"></div>
       <div class="hh-media">
-        <div class="hh-left-menu">
-          <ul>
+        <div class="hh-sidebar">
+          <ul class="hh-sidebar-links">
             <li>
-              <a href=""
-                >Woman's Fashion <i class="fa-solid fa-caret-down"></i
-              ></a>
+              <a href="">Woman's Fashion <span class="hh-arrow">></span></a>
             </li>
             <li>
-              <a href=""
-                >Man's Fashion <i class="fa-solid fa-caret-down"></i
-              ></a>
+              <a href="">Man's Fashion <span class="hh-arrow">></span></a>
             </li>
             <li><a href="">Electronics</a></li>
             <li><a href="">Home & Lifestyle</a></li>
@@ -77,8 +73,42 @@
             <li><a href="">Health & Beauty</a></li>
           </ul>
         </div>
-        <div class="hh-media-line"></div>
-        <div class="hh-media-images"></div>
+        <div class="hh-slider-container">
+          <div class="hh-slides">
+            <div class="hh-slide">
+              <div class="hh-text-content">
+                <img src="images/apple-icon.svg" alt="" />
+                <h1>iPhone 14 Series</h1>
+                <p>Up to 10% off Voucher</p>
+                <a href="#" class="hh-shop-now">Shop Now</a>
+              </div>
+              <img
+                class="hh-slide-image"
+                src="images/iphone-pink.png"
+                alt="iPhone 14"
+              />
+            </div>
+            <div class="hh-slide">
+              <img src="images/gucci-perfume.png" alt="" />
+            </div>
+            <div class="hh-slide">
+              <img src="images/playstation5.png" alt="" />
+            </div>
+            <div class="hh-slide">
+              <img src="images/speakers.png" alt="" />
+            </div>
+            <div class="hh-slide">
+              <img src="images/woman-with-hat.png" alt="" />
+            </div>
+          </div>
+          <div class="hh-media-navigation">
+            <button class="hh-nav-button" onclick="showSlide(0)"></button>
+            <button class="hh-nav-button" onclick="showSlide(1)"></button>
+            <button class="hh-nav-button" onclick="showSlide(2)"></button>
+            <button class="hh-nav-button" onclick="showSlide(3)"></button>
+            <button class="hh-nav-button" onclick="showSlide(4)"></button>
+          </div>
+        </div>
       </div>
     </div>
 

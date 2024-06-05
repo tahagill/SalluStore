@@ -34,13 +34,35 @@ function renderProducts(products, searchText) {
 
     const productsHTML = products.map((product) => {
         return `
-            <div class="product">
-                <img src="${product.image}">  
-                <h3>${product.title}</h3>
-                <p>$${product.price}</p>
-            </div>
+            <a href="product-page.html?id=${product.id}" class="product-link">
+                <div class="product">
+                    <img src="${product.image}">  
+                    <h3>${product.title}</h3>
+                    <p>$${product.price}</p>
+                </div>
+            </a>
         `;
     }).join('');
 
     hhSearchResult.innerHTML = productsHTML;
 }
+
+const slides = document.querySelector('.hh-slides');
+const navButtons = document.querySelectorAll('.hh-nav-button');
+
+let currentSlide = 0;
+
+function showSlide(index) {
+  
+  slides.style.transform = `translateX(-${index * 100}%)`;
+  
+  
+  currentSlide = index;
+  
+
+  navButtons.forEach((button, idx) => {
+    button.classList.toggle('active', idx === currentSlide);
+  });
+}
+
+showSlide(0);
