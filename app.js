@@ -1,3 +1,4 @@
+// Erkin Homepage Header START
 const hhSearchInput = document.querySelector('#hhSearchInput');
 const hhSearchResult = document.querySelector('.hh-search-dropdown');
 
@@ -18,10 +19,10 @@ hhSearchInput.addEventListener("keyup", () => {
         return product.title.toLowerCase().includes(searchText);
     });
 
-    renderProducts(filteredProducts, searchText);
+    renderHeaderProducts(filteredProducts, searchText);
 });
 
-function renderProducts(products, searchText) {
+function renderHeaderProducts(products, searchText) {
     if (searchText === "") {
         hhSearchResult.innerHTML = '';
         return;
@@ -66,3 +67,4 @@ function showSlide(index) {
 }
 
 showSlide(0);
+// Erkin Homepage Header END 

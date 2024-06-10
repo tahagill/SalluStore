@@ -1,3 +1,4 @@
+/* Erkin Homepage Header START */
 .hh-top {
   display: flex;
   justify-content: center;
@@ -262,5 +263,6 @@
 }
 
 .hh-nav-button.active {
-  background-color: #007bff;
+  background-color: #ff0000;
 }
+/* Erkin Homepage Header END */
