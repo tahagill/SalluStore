@@ -23,53 +23,122 @@ function updateCountDay() {
   remainingDay.innerHTML = `0${days}`;
 }
 function updateCountHours() {
-    const now = new Date().getTime();
-    const distance = countdownDate - now;
-  
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    remaininHours.innerHTML = `${hours}`;
-  }
-  function updateCountMinute() {
-    const now = new Date().getTime();
-    const distance = countdownDate - now;
-  
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    remaininMunites.innerHTML = `${minutes}`;
-  }
-  function updateCountSecond() {
-    const now = new Date().getTime();
-    const distance = countdownDate - now;
-  
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    remaininSeconds.innerHTML = `${seconds}`;
-  }
-  
-  
+  const now = new Date().getTime();
+  const distance = countdownDate - now;
+
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  remaininHours.innerHTML = `${hours}`;
+}
+function updateCountMinute() {
+  const now = new Date().getTime();
+  const distance = countdownDate - now;
+
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  remaininMunites.innerHTML = `${minutes}`;
+}
+function updateCountSecond() {
+  const now = new Date().getTime();
+  const distance = countdownDate - now;
+
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  remaininSeconds.innerHTML = `${seconds}`;
+}
+
+
 // Timer End
 //Flash Sale Start
 
- const endpoint = "https://fakestoreapi.com/products?limit=4";
+const endpoint = "https://fakestoreapi.com/products";
 
- async function getProdcuts(){
-    const response = await fetch(endpoint);
-    const products = await response.json();
-    
-    productFlashSale(products)
- }
+async function getProdcuts() {
+  const response = await fetch(endpoint);
+  const products = await response.json();
 
- getProdcuts();
+  productFlashSale(products)
+}
 
-function productFlashSale(products){
-    const productFlashSaleContinuer = document.querySelector("#productFlashSaleContinuer");
-    const productFS = products
+getProdcuts();
+
+
+function productFlashSale(products) {
+  const productFlashSaleContainer = document.querySelector("#productFlashSaleContainer");
+  let priceDiscount;
+  let priceDiscountDetails = "-50%";
+  const productFS = products
     .map((product) => {
-        return `<div>
-                <img src="${product.image}" />
-                <h2>${product.title}</h2>
-                <p>${product.price}</p>
-                <p>${product.rating.count}</p>
-                <p class="Id"${product.id}"/>
+      return `<div class="product-card">
+                  <div class="img-container">
+                    <img src="${product.image}" />
+                    <div class="discountDetails">${priceDiscountDetails}</div>
+                    <div class="add-card">
+                      <h3>Add To Cart</h3>
+                    </div>
+                  </div>
+                  <div class="product-title">
+                    <h5>${product.title}</h5>
+                  </div>
+                  <div class="product-price">
+                    <h4>$${priceDiscount = product.price - product.price * 50 / 100}</h4>
+                    <div class="product-price_block">
+                      <h4>$${product.price}</h4>
+                    </div>
+                  </div>
+                  <div class="product-stars">
+                    <div class="product-img">
+                      ${renderRatingStars(product.rating.rate)}
+                    </div>
+                    <div class="product-stars_voting">
+                      <p>(${product.rating.count})</p>
+                    </div>
+                  </div>
             </div>`
     }).join("");
+    productFlashSaleContainer.innerHTML = productFS;
+    
 }
+
+function renderRatingStars(rating){
+  let stars ="";
+  const emptyStars = 5 - Math.round(rating);
+  for(let i = 0; i < Math.round(rating); i++){
+    stars+='<img src="images/starNone.png" />'
+  }
+  if(stars !== 0)
+    {
+      for(let z = 0; z < emptyStars; z++){
+      stars+='<img src="images/star.png" />'
+      }
+    }
+    else{}
+  return stars;
+}
+
+const initSlider = () => {
+const productList = document.querySelector(".todaysProduct .product-Flash-Sale-Container");
+const slideButtons = document.querySelectorAll(".productDirection .direction-Button");
+const maxScrollLeft = productList.scrollWidth - productList.clientWidth;
+
+slideButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    let direction ;
+    if(button.id === "prevButton"){
+      direction = -1;
+    }
+    else{
+      direction = 1;
+    }
+    const scrollAmount = productList.clientWidth * direction;
+    productList.scrollBy({left: scrollAmount, behavior: "smooth"});
+  });
+});
+const handleSlideButtons = () =>{
+  slideButtons[0].style.display = productList.scrollLeft <= 0 ? "none" : "block";
+  slideButtons[1].style.display = productList.scrollLeft >= 4960 ? " none" : "block" ;
+}
+productList.addEventListener("scroll", () =>{
+  handleSlideButtons();
+});
+}
+window.addEventListener("load", initSlider);
+
 //Flash Sale End
