@@ -33,13 +33,52 @@
       </div>
       <div class="hh-nav">
         <div class="hh-logo"><a href="">Exclusive</a></div>
-        <ul class="hh-links">
+        <ul class="hh-links hh-links-copy">
+          <li onclick="hideHhLinksCopy()">
+            <a href=""
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="26px"
+                viewBox="0 -960 960 960"
+                width="26px"
+                fill="#5f6368"
+              >
+                <path
+                  d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"
+                /></svg
+            ></a>
+          </li>
+          <li><a href="">Home</a></li>
+          <li><a href="">Contact</a></li>
+          <li><a href="">About</a></li>
+          <li><a href="">Sign Up</a></li>
+          <li>
+            <input
+              class="hh-input"
+              id="hhSearchInput"
+              type="text"
+              placeholder="What are you looking for?"
+            />
+
+            <div id="hhSearchResult" class="hh-search-dropdown"></div>
+          </li>
+          <li>
+            <a href="wishlist.html"
+              ><img src="images/wishlist-icon.svg" alt=""
+            /></a>
+          </li>
+          <li>
+            <a href="cart.html"><img src="images/cart-icon.svg" alt="" /></a>
+          </li>
+        </ul>
+
+        <ul class="hh-links hh-hide">
           <li><a href="">Home</a></li>
           <li><a href="">Contact</a></li>
           <li><a href="">About</a></li>
           <li><a href="">Sign Up</a></li>
         </ul>
-        <div class="hh-input-box">
+        <div class="hh-input-box hh-hide">
           <div class="hh-input-wrapper">
             <input
               class="hh-input"
@@ -55,6 +94,20 @@
           /></a>
           <a href="cart.html"><img src="images/cart-icon.svg" alt="" /></a>
         </div>
+        <li class="hh-menu-button" onclick="showHhLinksCopy()">
+          <a href=""
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="26px"
+              viewBox="0 -960 960 960"
+              width="26px"
+              fill="#5f6368"
+            >
+              <path
+                d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"
+              /></svg
+          ></a>
+        </li>
       </div>
       <div class="hh-nav-line"></div>
       <div class="hh-media">

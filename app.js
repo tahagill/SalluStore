@@ -66,5 +66,13 @@ function showSlide(index) {
 }
 
 showSlide(0);
+function showHhLinksCopy() {
+  const hhLinksCopy = document.querySelector(".hh-links-copy");
+  hhLinksCopy.style.display = "flex";
+}
 
+function hideHhLinksCopy() {
+  const hhLinksCopy = document.querySelector(".hh-links-copy");
+  hhLinksCopy.style.display = "none";
+}
 // Erkin Homepage Header END
