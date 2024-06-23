@@ -195,6 +195,8 @@
 .hh-slides {
   display: flex;
   transition: transform 0.5s ease-in-out;
+  width: 100%;
+  height: 100%;
 }
 
 .hh-slide {
@@ -224,7 +226,7 @@
 .hh-text-content p {
   font-family: "Inter", sans-serif;
   font-weight: 600;
-  font-size: 48px;
+  font-size: clamp(24px, 3vw, 48px);
   line-height: 60px;
 }
 .hh-text-header {
@@ -234,7 +236,7 @@
 .hh-title {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
-  font-size: 16px;
+  font-size: clamp(12px, 2vw, 16px);
   line-height: 24px;
   align-content: center;
 }
@@ -272,4 +274,40 @@
   height: 344px;
 }
 
+@media (max-width: 1025px) {
+  .hh-media {
+    flex-direction: column;
+    align-items: center;
+  }
+  .hh-sidebar {
+    width: 100%;
+  }
+  .hh-sidebar-links li {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }
+  .hh-arrow {
+    display: none;
+  }
+  .hh-slider-container {
+    width: 100%;
+  }
+  .hh-text-header img {
+    width: 30px;
+    height: 39px;
+  }
+}
+@media (max-width: 850px) {
+  .hh-text-content {
+    display: none;
+  }
+  .hh-slide img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+  }
+}
 /* Erkin Homepage Header END */
