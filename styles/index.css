@@ -245,14 +245,6 @@
   border-radius: 5px;
   font-weight: bold;
 }
-.hh-shop-now::after {
-  content: "→";
-  position: absolute;
-  right: -20px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 20px;
-}
 
 .hh-media-navigation {
   position: absolute;
