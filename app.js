@@ -1,7 +1,4 @@
 // Erkin Homepage Header START
-const hhSearchInput = document.querySelector("#hhSearchInput");
-const hhSearchResult = document.querySelector(".hh-search-dropdown");
-
 let allProducts = [];
 
 async function getProducts() {
@@ -12,42 +9,57 @@ async function getProducts() {
 
 getProducts();
 
-hhSearchInput.addEventListener("keyup", () => {
-  const searchText = hhSearchInput.value.toLowerCase();
+const hhSearchInput = document.querySelector("#hhSearchInput");
+const hhSearchResult = document.querySelector(".hh-search-dropdown");
 
-  const filteredProducts = allProducts.filter((product) => {
-    return product.title.toLowerCase().includes(searchText);
+const hhResponsiveSearchInput = document.querySelector(
+  "#hhResponsiveSearchInput"
+);
+const hhResponsiveSearchResult = document.querySelector(
+  "#hhResponsiveSearchResult"
+);
+
+function handleSearch(inputElement, resultElement) {
+  inputElement.addEventListener("keyup", () => {
+    const searchText = inputElement.value.toLowerCase();
+
+    const filteredProducts = allProducts.filter((product) => {
+      return product.title.toLowerCase().includes(searchText);
+    });
+
+    renderHeaderProducts(filteredProducts, searchText, resultElement);
   });
+}
 
-  renderHeaderProducts(filteredProducts, searchText);
-});
+handleSearch(hhSearchInput, hhSearchResult);
+handleSearch(hhResponsiveSearchInput, hhResponsiveSearchResult);
 
-function renderHeaderProducts(products, searchText) {
+function renderHeaderProducts(products, searchText, resultElement) {
   if (searchText === "") {
-    hhSearchResult.innerHTML = "";
+    resultElement.innerHTML = "";
     return;
   }
 
   if (products.length === 0) {
-    hhSearchResult.innerHTML = "<p>Ürün bulunamadı.</p>";
+    resultElement.innerHTML = "<p>Ürün bulunamadı.</p>";
     return;
   }
 
   const productsHTML = products
     .map((product) => {
       return `
-            <a href="product-page.html?id=${product.id}" class="product-link">
-                <div class="product">
-                    <img src="${product.image}">  
-                    <h3>${product.title}</h3>
-                    <p>$${product.price}</p>
-                </div>
-            </a>
-        `;
+        <a href="product-page.html?id=${product.id}" class="product-link">
+          <div class="product">
+            <img src="${product.image}">
+            <h3>${product.title}</h3>
+            <p>$${product.price}</p>
+          </div>
+        </a>
+      `;
     })
     .join("");
 
-  hhSearchResult.innerHTML = productsHTML;
+  resultElement.innerHTML = productsHTML;
 }
 
 const slides = document.querySelector(".hh-slides");
@@ -66,6 +78,7 @@ function showSlide(index) {
 }
 
 showSlide(0);
+
 let hhIsMenuVisible = false;
 
 function toggleHhLinksCopy() {
@@ -73,8 +86,10 @@ function toggleHhLinksCopy() {
   hhIsMenuVisible = !hhIsMenuVisible;
   if (hhIsMenuVisible) {
     hhLinksCopy.style.display = "flex";
+    document.body.style.overflow = "hidden";
   } else {
     hhLinksCopy.style.display = "none";
+    document.body.style.overflow = "";
   }
 }
 
