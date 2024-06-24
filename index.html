@@ -33,8 +33,45 @@
       </div>
       <div class="hh-nav">
         <div class="hh-logo"><a href="">Exclusive</a></div>
+
+        <ul class="hh-links hh-hide">
+          <li><a href="">Home</a></li>
+          <li><a href="">Contact</a></li>
+          <li><a href="">About</a></li>
+          <li><a href="">Sign Up</a></li>
+        </ul>
+        <div class="hh-input-box hh-hide">
+          <div class="hh-input-wrapper">
+            <input
+              class="hh-input"
+              id="hhSearchInput"
+              type="text"
+              placeholder="What are you looking for?"
+            />
+            <i class="fa-solid fa-magnifying-glass hh-icon"></i>
+            <div id="hhSearchResult" class="hh-search-dropdown"></div>
+          </div>
+          <a href="wishlist.html"
+            ><img src="images/wishlist-icon.svg" alt=""
+          /></a>
+          <a href="cart.html"><img src="images/cart-icon.svg" alt="" /></a>
+        </div>
+        <li class="hh-menu-button">
+          <a href=""
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="26px"
+              viewBox="0 -960 960 960"
+              width="26px"
+              fill="#5f6368"
+            >
+              <path
+                d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"
+              /></svg
+          ></a>
+        </li>
         <ul class="hh-links hh-links-copy">
-          <li onclick="hideHhLinksCopy()">
+          <li class="hh-close-button">
             <a href=""
               ><svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -59,7 +96,6 @@
               type="text"
               placeholder="What are you looking for?"
             />
-
             <div id="hhSearchResult" class="hh-search-dropdown"></div>
           </li>
           <li>
@@ -71,44 +107,8 @@
             <a href="cart.html"><img src="images/cart-icon.svg" alt="" /></a>
           </li>
         </ul>
-
-        <ul class="hh-links hh-hide">
-          <li><a href="">Home</a></li>
-          <li><a href="">Contact</a></li>
-          <li><a href="">About</a></li>
-          <li><a href="">Sign Up</a></li>
-        </ul>
-        <div class="hh-input-box hh-hide">
-          <div class="hh-input-wrapper">
-            <input
-              class="hh-input"
-              id="hhSearchInput"
-              type="text"
-              placeholder="What are you looking for?"
-            />
-            <i class="fa-solid fa-magnifying-glass hh-icon"></i>
-            <div id="hhSearchResult" class="hh-search-dropdown"></div>
-          </div>
-          <a href="wishlist.html"
-            ><img src="images/wishlist-icon.svg" alt=""
-          /></a>
-          <a href="cart.html"><img src="images/cart-icon.svg" alt="" /></a>
-        </div>
-        <li class="hh-menu-button" onclick="showHhLinksCopy()">
-          <a href=""
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="26px"
-              viewBox="0 -960 960 960"
-              width="26px"
-              fill="#5f6368"
-            >
-              <path
-                d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"
-              /></svg
-          ></a>
-        </li>
       </div>
+
       <div class="hh-nav-line"></div>
       <div class="hh-media">
         <div class="hh-sidebar">

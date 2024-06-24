@@ -66,13 +66,30 @@ function showSlide(index) {
 }
 
 showSlide(0);
-function showHhLinksCopy() {
+let hhIsMenuVisible = false;
+
+function toggleHhLinksCopy() {
   const hhLinksCopy = document.querySelector(".hh-links-copy");
-  hhLinksCopy.style.display = "flex";
+  hhIsMenuVisible = !hhIsMenuVisible;
+  if (hhIsMenuVisible) {
+    hhLinksCopy.style.display = "flex";
+  } else {
+    hhLinksCopy.style.display = "none";
+  }
 }
 
-function hideHhLinksCopy() {
-  const hhLinksCopy = document.querySelector(".hh-links-copy");
-  hhLinksCopy.style.display = "none";
-}
+document
+  .querySelector(".hh-menu-button")
+  .addEventListener("click", function (event) {
+    event.preventDefault();
+    toggleHhLinksCopy();
+  });
+
+document
+  .querySelector(".hh-links-copy .hh-close-button")
+  .addEventListener("click", function (event) {
+    event.preventDefault();
+    toggleHhLinksCopy();
+  });
+
 // Erkin Homepage Header END
