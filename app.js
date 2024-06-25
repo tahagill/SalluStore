@@ -55,6 +55,7 @@ async function getProdcuts() {
   const products = await response.json();
 
   productFlashSale(products)
+
 }
 
 getProdcuts();
@@ -69,16 +70,19 @@ function productFlashSale(products) {
       return `<div class="product-card">
                   <div class="img-container">
                     <img src="${product.image}" />
-                    <div class="discountDetails">${priceDiscountDetails}</div>
+                    <div class="discountDetails">${priceDiscountDetails}</div>       
                     <div class="add-card">
-                      <h3>Add To Cart</h3>
+                      <h3 class="add-to-cart" id="addToCart">Add To Cart</h3>
                     </div>
                   </div>
+                  <div class="favoriButton">
+                      <input type="button" id="favori-Button" value="♡">
+                    </div>
                   <div class="product-title">
-                    <h5>${product.title}</h5>
+                    <h5 class="product-title-text">${product.title}</h5>
                   </div>
                   <div class="product-price">
-                    <h4>$${priceDiscount = product.price - product.price * 50 / 100}</h4>
+                    <h4>$${makeDiscountPrice(product.price, 50)}</h4>
                     <div class="product-price_block">
                       <h4>$${product.price}</h4>
                     </div>
@@ -93,52 +97,68 @@ function productFlashSale(products) {
                   </div>
             </div>`
     }).join("");
-    productFlashSaleContainer.innerHTML = productFS;
-    
+  productFlashSaleContainer.innerHTML = productFS;
+  const addToProductCart = document.querySelectorAll('.add-card');
+  addToProductCart.forEach((item) => {
+    item.addEventListener('click', (e) => {
+      console.log(e.target.parentElement.parentElement.parentElement.querySelector('.product-title-text').textContent);
+      console.log(e.target.parentElement.parentElement.parentElement.querySelector('.product-price').querySelector('h4').textContent);
+    })
+  })
+  const favBtns = document.querySelectorAll('.favoriButton');
+  favBtns.forEach((item) => {
+    item.addEventListener('click', (e) => {
+      e.target.textContent = "♥";
+    })
+  })
 }
 
-function renderRatingStars(rating){
-  let stars ="";
+
+function renderRatingStars(rating) {
+  let stars = "";
   const emptyStars = 5 - Math.round(rating);
-  for(let i = 0; i < Math.round(rating); i++){
-    stars+='<img src="images/starNone.png" />'
+  for (let i = 0; i < Math.round(rating); i++) {
+    stars += '<img src="images/starNone.png" />'
   }
-  if(stars !== 0)
-    {
-      for(let z = 0; z < emptyStars; z++){
-      stars+='<img src="images/star.png" />'
-      }
+  if (stars !== 0) {
+    for (let z = 0; z < emptyStars; z++) {
+      stars += '<img src="images/star.png" />'
     }
-    else{}
+  }
+  else { }
   return stars;
 }
 
 const initSlider = () => {
-const productList = document.querySelector(".todaysProduct .product-Flash-Sale-Container");
-const slideButtons = document.querySelectorAll(".productDirection .direction-Button");
-const maxScrollLeft = productList.scrollWidth - productList.clientWidth;
+  const productList = document.querySelector(".todaysProduct .product-Flash-Sale-Container");
+  const slideButtons = document.querySelectorAll(".productDirection .direction-Button");
+  const maxScrollLeft = productList.scrollWidth - productList.clientWidth;
 
-slideButtons.forEach(button => {
-  button.addEventListener("click", () => {
-    let direction ;
-    if(button.id === "prevButton"){
-      direction = -1;
-    }
-    else{
-      direction = 1;
-    }
-    const scrollAmount = productList.clientWidth * direction;
-    productList.scrollBy({left: scrollAmount, behavior: "smooth"});
+  slideButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      let direction;
+      if (button.id === "prevButton") {
+        direction = -1;
+      }
+      else {
+        direction = 1;
+      }
+      const scrollAmount = productList.clientWidth * direction;
+      productList.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    });
   });
-});
-const handleSlideButtons = () =>{
-  slideButtons[0].style.display = productList.scrollLeft <= 0 ? "none" : "block";
-  slideButtons[1].style.display = productList.scrollLeft >= 4960 ? " none" : "block" ;
-}
-productList.addEventListener("scroll", () =>{
-  handleSlideButtons();
-});
+  const handleSlideButtons = () => {
+    slideButtons[0].style.display = productList.scrollLeft <= 0 ? "none" : "block";
+    slideButtons[1].style.display = productList.scrollLeft >= 4960 ? " none" : "block";
+  }
+  productList.addEventListener("scroll", () => {
+    handleSlideButtons();
+  });
 }
 window.addEventListener("load", initSlider);
+
+function makeDiscountPrice(price, discount) {
+  return (price - (price * discount) / 100).toFixed(2);
+}
 
 //Flash Sale End
