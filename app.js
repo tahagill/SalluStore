@@ -19,7 +19,7 @@ const hhResponsiveSearchResult = document.querySelector(
   "#hhResponsiveSearchResult"
 );
 
-function handleSearch(inputElement, resultElement) {
+function hhHandleSearch(inputElement, resultElement) {
   inputElement.addEventListener("keyup", () => {
     const searchText = inputElement.value.toLowerCase();
 
@@ -31,8 +31,8 @@ function handleSearch(inputElement, resultElement) {
   });
 }
 
-handleSearch(hhSearchInput, hhSearchResult);
-handleSearch(hhResponsiveSearchInput, hhResponsiveSearchResult);
+hhHandleSearch(hhSearchInput, hhSearchResult);
+hhHandleSearch(hhResponsiveSearchInput, hhResponsiveSearchResult);
 
 function renderHeaderProducts(products, searchText, resultElement) {
   if (searchText === "") {
