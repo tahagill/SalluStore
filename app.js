@@ -51,7 +51,7 @@ function updateCountSecond() {
 const endpoint = "https://fakestoreapi.com/products";
 
 let allProducts = [];
-let wishList = [];
+let wishListProduct = [];
 async function getProducts() {
   const response = await fetch(endpoint);
   const products = await response.json();
@@ -116,7 +116,7 @@ function productFlashSale(products) {
   productFlashSaleContainer.innerHTML = productFS;
 }
 function favoriButton(favorite) {
-  const wishList = JSON.parse(localStorage.getItem("wishList")) || [];
+  const wishList = JSON.parse(localStorage.getItem("wishListProduct")) || [];
   const WishListToAdd = allProducts.find((product) => product.id === favorite);
 
   const ProductInFavorite = wishList.some(
@@ -125,7 +125,7 @@ function favoriButton(favorite) {
 
   if (!ProductInFavorite) {
     const newWishList = [...wishList, { ...WishListToAdd, quantity: 1 }];
-    localStorage.setItem("wishList", JSON.stringify(newWishList));
+    localStorage.setItem("wishListProduct", JSON.stringify(newWishList));
   } else {
     alert("Bu ürün zaten favorilere ekli!");
   }
