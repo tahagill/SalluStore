@@ -1,4 +1,12 @@
 /* Erkin Homepage Header START */
+.homepage-header {
+  margin-bottom: 50px;
+}
+.homepage-header * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 .hh-top {
   display: flex;
   justify-content: center;
