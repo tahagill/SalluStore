@@ -1,10 +1,13 @@
 // Erkin Homepage Header START
-let allProducts = [];
+const endpoint = "https://fakestoreapi.com/products";
 
+let allProducts = [];
+let wishListProduct = [];
 async function getProducts() {
-  const response = await fetch("https://fakestoreapi.com/products");
+  const response = await fetch(endpoint);
   const products = await response.json();
   allProducts = products;
+  productFlashSale(products);
 }
 
 getProducts();
@@ -168,19 +171,6 @@ function updateCountSecond() {
 
 // Timer End
 //Flash Sale Start
-
-const endpoint = "https://fakestoreapi.com/products";
-
-let allProducts = [];
-let wishListProduct = [];
-async function getProducts() {
-  const response = await fetch(endpoint);
-  const products = await response.json();
-  allProducts = products;
-  productFlashSale(products);
-}
-
-getProducts();
 
 function addToCart(productId) {
   const cartProducts = JSON.parse(localStorage.getItem("cartProducts")) || [];
