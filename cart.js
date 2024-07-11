@@ -13,12 +13,28 @@ const products =
       "quantity": 1
     }]
   
+const coupons = [
+  {
+    id: 1,
+    kod: "SALE30",
+    discount: 30,
+  },
+  {
+    id: 2,
+    kod: "SALE40",
+    discount: 40,
+  },
+];
+    
 localStorage.setItem('cartProducts', JSON.stringify(products));
 const productsTable = document.querySelector(".products-table");
 const emptyContainer = document.querySelector(".empty-container");
 const subtotal = document.querySelector(".subtotal span");
 const total = document.querySelector(".total span");
+const couponInput = document.querySelector(".coupon-box input");
+const applyBtn = document.querySelector(".coupon-box button");
 const updateBtn = document.querySelector(".update-btn");
+const discountContainer = document.querySelector(".discountPercent");
 function renderCartProducts() {
     const cartProducts = JSON.parse(localStorage.getItem("cartProducts")) || [];
     console.log(cartProducts, cartProducts.length)
@@ -103,3 +119,25 @@ function deleteFromCardProducts(deletedProductId) {
   renderCartProducts();
  }
  
+ function makeDiscount(price, discount) {
+  return price - (price * discount) / 100;
+}
+
+function applyDiscount() {
+  const totalPrice = calculateTotal();
+  const inputValue = couponInput.value;
+  const coupon = coupons.find((coupon) => coupon.kod === inputValue);
+  if (coupon) {
+    const updatedPrice = makeDiscount(totalPrice, coupon.discount);
+    const discountedPrice = totalPrice - updatedPrice;
+    total.textContent = `${updatedPrice.toFixed(2)} $`;
+
+    discountContainer.innerHTML = `<s>${discountedPrice.toFixed(2)} $</s>`
+  } else {
+    alert("Invalid coupon!");
+  }
+}
+
+applyBtn.addEventListener("click", () => {
+  applyDiscount();
+});
