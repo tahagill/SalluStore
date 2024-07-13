@@ -48,3 +48,8 @@
 .wp-just {
   padding-right: 835px;
 }
+.wp-logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
