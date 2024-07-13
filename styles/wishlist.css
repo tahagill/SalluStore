@@ -45,11 +45,32 @@
   font-size: 20px;
   line-height: 26px;
 }
-.wp-just {
-  padding-right: 835px;
-}
+
 .wp-logo-container {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+.wpProductContainer {
+  display: flex;
+  gap: 20px;
+  padding: 10px;
+}
+.wp-btn-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.wpProduct {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+  img {
+    width: 180px;
+    height: 225px;
+  }
+}
+.wpPrice {
+  margin-top: auto;
 }
