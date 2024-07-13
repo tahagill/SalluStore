@@ -22,7 +22,25 @@
     <div class="wishlist-page">
       <div class="wp-container">
         <h2 class="wp-title">Wishlist (<span id="wp-count">0</span>)</h2>
-        <button id="move-all-to-bag" class="wp-button">Move All To Bag</button>
+        <div class="wp-btns">
+          <img
+            class="wp-arrow-btn"
+            id="wpBackward"
+            onclick="goBackward()"
+            src="images/Fill With Left Arrow.png"
+            alt=""
+          />
+          <img
+            class="wp-arrow-btn"
+            id="wpForward"
+            onclick="goForward()"
+            src="images/Fill with Right Arrow.png"
+            alt=""
+          />
+          <button id="move-all-to-bag" class="wp-button">
+            Move All To Bag
+          </button>
+        </div>
       </div>
       <div id="wpWishProduct" class="wp-grid"></div>
       <div class="wp-bottom-container">
