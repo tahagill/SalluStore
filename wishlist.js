@@ -41,8 +41,8 @@ function wpRenderWishlist() {
         wpProductElement.innerHTML = `<div class="wpProduct">
         <img src="${wpProduct.image}"/>
         <div class="wp-btn-container">
-            <button>Add To Cart</button>
-            <button>Remove</button>
+            <button class="wp-cart-remove-btns" onClick="addToCart(${wpProduct.id})">Add To Cart</button>
+            <button class="wp-cart-remove-btns">Remove</button>
         </div>
         <h4>${wpProduct.title}</h4>
         <p class="wpPrice">$${wpProduct.price}</p>
@@ -51,6 +51,22 @@ function wpRenderWishlist() {
       });
   } else {
     wpWishlistContainer.innerHTML = "İstek listenizde ürün yok";
+  }
+}
+
+function addToCart(productId) {
+  const cartProducts = JSON.parse(localStorage.getItem("cartProducts")) || [];
+  const productToAdd = allProducts.find((product) => product.id === productId);
+
+  const isProductInCart = cartProducts.some(
+    (product) => product.id === productId
+  );
+
+  if (!isProductInCart) {
+    const newCart = [...cartProducts, { ...productToAdd, quantity: 1 }];
+    localStorage.setItem("cartProducts", JSON.stringify(newCart));
+  } else {
+    alert("Bu ürün zaten sepette ekli!");
   }
 }
 wpRenderWishlist();

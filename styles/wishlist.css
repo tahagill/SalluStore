@@ -62,6 +62,12 @@
   align-items: center;
   gap: 10px;
 }
+.wp-cart-remove-btns {
+  background-color: #000000;
+  color: #f2613f;
+  border-radius: 4px;
+  cursor: pointer;
+}
 .wpProduct {
   display: flex;
   flex-direction: column;
