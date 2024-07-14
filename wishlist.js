@@ -1,7 +1,7 @@
 const wpWishlistContainer = document.querySelector("#wpWishProduct");
 wpWishlistContainer.classList.add("wpProductContainer");
 
-const wpWishlistProducts =
+let wpWishlistProducts =
   JSON.parse(localStorage.getItem("wishListProduct")) || [];
 
 const wpWishlistCount = wpWishlistProducts.length;
@@ -42,7 +42,7 @@ function wpRenderWishlist() {
         <img src="${wpProduct.image}"/>
         <div class="wp-btn-container">
             <button class="wp-cart-remove-btns" onClick="addToCart(${wpProduct.id})">Add To Cart</button>
-            <button class="wp-cart-remove-btns">Remove</button>
+            <button class="wp-cart-remove-btns" onClick="remove(${wpProduct.id})">Remove</button>
         </div>
         <h4>${wpProduct.title}</h4>
         <p class="wpPrice">$${wpProduct.price}</p>
@@ -65,8 +65,18 @@ function addToCart(productId) {
   if (!isProductInCart) {
     const newCart = [...cartProducts, { ...productToAdd, quantity: 1 }];
     localStorage.setItem("cartProducts", JSON.stringify(newCart));
+    alert("Ürün sepete eklendi!");
   } else {
     alert("Bu ürün zaten sepette ekli!");
   }
+}
+
+function remove(productId) {
+  wpWishlistProducts = wpWishlistProducts.filter(
+    (product) => product.id !== productId
+  );
+  localStorage.setItem("wishListProduct", JSON.stringify(wpWishlistProducts));
+  wpRenderWishlist();
+  wpWishlistCountDiv.textContent = `${wpWishlistProducts.length}`;
 }
 wpRenderWishlist();
