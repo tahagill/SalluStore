@@ -276,8 +276,7 @@ const initSlider = () => {
       if (button.id === "prevButton") {
         direction = -1;
       } else {
-        direction = 1;
-      }
+        direction = 1;      }
       const scrollAmount = productList.clientWidth * direction;
       productList.scrollBy({ left: scrollAmount, behavior: "smooth" });
     });
@@ -327,10 +326,49 @@ function getBestSellingProducts(){
                   <p class="stars">${getStars(product.rating.rate)}</p>
                   <p class="best-product-rate">(${product.rating.count})</p>
                 </div>
-                <span class="sale-price">%30</span>
+                <div class="wishlist-and-cart">
+                <i class="fa-regular fa-heart" onclick="addToWishlist(${product.id})"></i>
+                <i class="fa-solid fa-cart-shopping" onClick="addToCart(${product.id})"></i>
+               </div>
               </div>`;
     })
     .join("");
+}
+function addToWishlist(productId) {
+
+  wishlistProducts = JSON.parse(localStorage.getItem("wishlistProducts")) || [];
+
+  const wishlistProduct = wishlistProducts.find(
+    (product) => product.id === productId
+  );
+
+  if (!wishlistProduct) {
+    const productToAdd = allProducts.find(
+      (product) => product.id === productId
+    );
+    localStorage.setItem(
+      "wishlistProducts",
+      JSON.stringify([...wishlistProducts, { ...productToAdd, quantity: 1 }])
+    );
+  } else {
+    deleteFromWishlist(productId);
+  }
+}
+function addToCart(productId) {
+  const cartProducts = JSON.parse(localStorage.getItem("cartProducts")) || [];
+
+  const cartProduct = cartProducts.find((product) => product.id === productId);
+  if (!cartProduct) {
+    const productToAdd = allProducts.find(
+      (product) => product.id === productId
+    );
+    localStorage.setItem(
+      "cartProducts",
+      JSON.stringify([...cartProducts, { ...productToAdd, quantity: 1 }])
+    );
+  } else {
+    deleteFromCart(productId);
+  }
 }
 function getStars(rating) {
   let stars = ``;
