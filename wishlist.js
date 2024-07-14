@@ -4,6 +4,10 @@ wpWishlistContainer.classList.add("wpProductContainer");
 const wpWishlistProducts =
   JSON.parse(localStorage.getItem("wishListProduct")) || [];
 
+const wpWishlistCount = wpWishlistProducts.length;
+const wpWishlistCountDiv = document.getElementById("wp-count");
+wpWishlistCountDiv.textContent = `${wpWishlistCount}`;
+
 let wpCurrentIndex = 0;
 let wpEndIndex = 4;
 
