@@ -8,47 +8,23 @@ const wpWishlistCount = wpWishlistProducts.length;
 const wpWishlistCountDiv = document.getElementById("wp-count");
 wpWishlistCountDiv.textContent = `${wpWishlistCount}`;
 
-let wpCurrentIndex = 0;
-let wpEndIndex = 4;
-
-const wpNextButton = document.getElementById("wpForward");
-const wpPrevButton = document.getElementById("wpBackward");
-
-function goBackward() {
-  if (wpCurrentIndex > 0) {
-    wpCurrentIndex -= 4;
-    wpEndIndex -= 4;
-    wpRenderWishlist();
-  }
-}
-
-function goForward() {
-  if (wpEndIndex < wpWishlistProducts.length) {
-    wpCurrentIndex += 4;
-    wpEndIndex += 4;
-    wpRenderWishlist();
-  }
-}
-
 function wpRenderWishlist() {
   wpWishlistContainer.innerHTML = "";
 
   if (wpWishlistProducts && wpWishlistProducts.length > 0) {
-    wpWishlistProducts
-      .slice(wpCurrentIndex, wpEndIndex)
-      .forEach((wpProduct) => {
-        const wpProductElement = document.createElement("div");
-        wpProductElement.innerHTML = `<div class="wpProduct">
+    wpWishlistProducts.forEach((wpProduct) => {
+      const wpProductElement = document.createElement("div");
+      wpProductElement.innerHTML = `<div class="wpProduct">
         <img src="${wpProduct.image}"/>
         <div class="wp-btn-container">
-            <button class="wp-cart-remove-btns" onClick="addToCart(${wpProduct.id})">Add To Cart</button>
+            <button id="wpCart-${wpProduct.id}" class="wp-cart-remove-btns" onClick="addToCart(${wpProduct.id})">Add To Cart</button>
             <button class="wp-cart-remove-btns" onClick="remove(${wpProduct.id})">Remove</button>
         </div>
         <h4>${wpProduct.title}</h4>
         <p class="wpPrice">$${wpProduct.price}</p>
        </div>`;
-        wpWishlistContainer.appendChild(wpProductElement);
-      });
+      wpWishlistContainer.appendChild(wpProductElement);
+    });
   } else {
     wpWishlistContainer.innerHTML = "İstek listenizde ürün yok";
   }
@@ -65,9 +41,9 @@ function addToCart(productId) {
   if (!isProductInCart) {
     const newCart = [...cartProducts, { ...productToAdd, quantity: 1 }];
     localStorage.setItem("cartProducts", JSON.stringify(newCart));
-    alert("Ürün sepete eklendi!");
+    document.querySelector(`#wpCart-${productId}`).innerHTML = "Go To Cart";
   } else {
-    alert("Bu ürün zaten sepette ekli!");
+    window.location.href = "/cart.html";
   }
 }
 
@@ -77,6 +53,17 @@ function remove(productId) {
   );
   localStorage.setItem("wishListProduct", JSON.stringify(wpWishlistProducts));
   wpRenderWishlist();
+  wpIsCartProduct();
   wpWishlistCountDiv.textContent = `${wpWishlistProducts.length}`;
 }
 wpRenderWishlist();
+
+const wpIsCartProduct = () => {
+  const wpCartProducts = JSON.parse(localStorage.getItem("cartProducts"));
+  wpWishlistProducts.map((item) => {
+    if (wpCartProducts.some((product) => item.id === product.id)) {
+      document.querySelector(`#wpCart-${item.id}`).innerHTML = "Go To Cart";
+    }
+  });
+};
+wpIsCartProduct();

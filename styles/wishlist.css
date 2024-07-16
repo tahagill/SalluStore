@@ -21,24 +21,7 @@
   font-size: 16px;
   line-height: 24px;
 }
-.wp-bottom-container {
-  max-width: 1170px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 0 15px 0;
-  padding: 20px;
-}
-.wp-bottom-container button {
-  width: 159px;
-  height: 56px;
-}
-.wp-logo {
-  background-color: #db4444;
-  border-radius: 4px;
-  width: 20px;
-  height: 40px;
-}
+
 .wp-title {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
@@ -46,16 +29,12 @@
   line-height: 26px;
 }
 
-.wp-logo-container {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
 .wpProductContainer {
-  display: flex;
+  max-width: 1170px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   padding: 10px;
-  justify-content: center;
 }
 .wp-btn-container {
   display: flex;
@@ -86,11 +65,4 @@
 }
 .wpPrice {
   margin-top: auto;
-}
-.wp-btns {
-  display: flex;
-  gap: 10px;
-  .wp-arrow-btn {
-    cursor: pointer;
-  }
 }
