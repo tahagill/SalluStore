@@ -1,0 +1,86 @@
+.wishlist-page {
+  max-width: 1350px;
+  margin: 0 auto;
+}
+.wp-container {
+  max-width: 1170px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 15px 0;
+  padding: 20px;
+}
+.wp-button {
+  width: 223px;
+  height: 56px;
+  border-radius: 4px;
+  background-color: white;
+  color: #000000;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  cursor: pointer;
+}
+.wp-button:hover {
+  background-color: #f2613f;
+  color: antiquewhite;
+}
+.wp-title {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 26px;
+}
+
+.wpProductContainer {
+  max-width: 1170px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 10px;
+}
+.wp-btn-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.wp-cart-remove-btns {
+  background-color: #000000;
+  color: #f2613f;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.wpProduct {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 250px;
+  height: 100%;
+  align-items: center;
+  h4 {
+    height: 50px;
+    text-align: center;
+  }
+  img {
+    width: 100%;
+    height: 225px;
+    object-fit: contain;
+  }
+}
+.wpPrice {
+  margin-top: auto;
+}
+@media (max-width: 1120px) {
+  .wpProductContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+@media (max-width: 420px) {
+  .wp-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
