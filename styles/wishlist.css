@@ -22,7 +22,10 @@
   line-height: 24px;
   cursor: pointer;
 }
-
+.wp-button:hover {
+  background-color: #f2613f;
+  color: antiquewhite;
+}
 .wp-title {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
