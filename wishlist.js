@@ -56,6 +56,32 @@ function remove(productId) {
   wpIsCartProduct();
   wpWishlistCountDiv.textContent = `${wpWishlistProducts.length}`;
 }
+
+function moveAllToBag() {
+  const cartProducts = JSON.parse(localStorage.getItem("cartProducts")) || [];
+  const newCartProducts = wpWishlistProducts
+    .filter(
+      (wpProduct) =>
+        !cartProducts.some((cartProduct) => cartProduct.id === wpProduct.id)
+    )
+    .map((wpProduct) => ({ ...wpProduct, quantity: 1 }));
+
+  const updatedCartProducts = [...cartProducts, ...newCartProducts];
+  localStorage.setItem("cartProducts", JSON.stringify(updatedCartProducts));
+
+  wpWishlistProducts = [];
+  localStorage.setItem("wishListProduct", JSON.stringify(wpWishlistProducts));
+  wpRenderWishlist();
+  wpIsCartProduct();
+  wpWishlistCountDiv.textContent = `${wpWishlistProducts.length}`;
+
+  window.location.href = "/cart.html";
+}
+
+document
+  .getElementById("wpMoveAllToBag")
+  .addEventListener("click", moveAllToBag);
+
 wpRenderWishlist();
 
 const wpIsCartProduct = () => {
