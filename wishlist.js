@@ -69,7 +69,6 @@ function moveAllToBag() {
   const updatedCartProducts = [...cartProducts, ...newCartProducts];
   localStorage.setItem("cartProducts", JSON.stringify(updatedCartProducts));
 
-  wpWishlistProducts = [];
   localStorage.setItem("wishListProduct", JSON.stringify(wpWishlistProducts));
   wpRenderWishlist();
   wpIsCartProduct();
