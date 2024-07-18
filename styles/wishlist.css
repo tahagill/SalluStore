@@ -67,3 +67,16 @@
 .wpPrice {
   margin-top: auto;
 }
+@media (max-width: 1120px) {
+  .wpProductContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+@media (max-width: 420px) {
+  .wp-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
