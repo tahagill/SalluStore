@@ -635,6 +635,13 @@
 .featured-product-container {
   max-width: 1170px;
 }
+.hfp.title-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 82px 4px;
+  gap: 25px;
+}
 .hfp-subtitle {
   color: #00ff66;
   font-family: "Poppins", sans-serif;
@@ -659,6 +666,15 @@
   color: white;
   padding: 16px 48px;
   cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+}
+.hfp-btn:hover {
+  background: white;
+  color: #000;
+  transform: scale(1.1);
 }
 .hfp-timer {
   display: flex;
@@ -667,12 +683,17 @@
 .hfp-duration {
   background: white;
   border-radius: 50%;
-  width: 62px;
-  height: 62px;
+  width: 65px;
+  height: 65px;
   object-fit: contain;
   justify-content: center;
   display: flex;
   align-items: center;
+  flex-direction: column;
+}
+.hfp-duration:hover {
+  background: #00ff66;
+  color: white;
 }
 /* Erkin Homepage Featured Product END */
 
