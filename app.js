@@ -348,20 +348,15 @@ function wpUpdateCountSeconds() {
 }
 
 async function hfpRandomProductImage() {
-  try {
-    let response = await fetch("https://fakestoreapi.com/products");
-    let products = await response.json();
+  let response = await fetch("https://fakestoreapi.com/products");
+  let products = await response.json();
 
-    let hfpRandomProduct =
-      products[Math.floor(Math.random() * products.length)];
+  let hfpRandomProduct = products[Math.floor(Math.random() * products.length)];
 
-    let hfpProductImage = hfpRandomProduct.image;
+  let hfpProductImage = hfpRandomProduct.image;
 
-    let hfpImageBox = document.getElementById("hfpRandomImage");
-    hfpImageBox.innerHTML = `<img class="hfp-image" src="${hfpProductImage}" alt="Random Product Image" />`;
-  } catch (error) {
-    console.error("Ürün çekme hatası:", error);
-  }
+  let hfpImageBox = document.getElementById("hfpRandomImage");
+  hfpImageBox.innerHTML = `<img class="hfp-image" src="${hfpProductImage}" alt="Random Product Image" />`;
 }
 
 window.onload = hfpRandomProductImage;
