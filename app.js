@@ -346,4 +346,22 @@ function wpUpdateCountSeconds() {
   const seconds = Math.floor((distance % (1000 * 60)) / 1000);
   wpRemainingSeconds.innerHTML = `${seconds}`;
 }
+
+async function fetchRandomProductImage() {
+  try {
+    let response = await fetch("https://fakestoreapi.com/products");
+    let products = await response.json();
+
+    let randomProduct = products[Math.floor(Math.random() * products.length)];
+
+    let productImage = randomProduct.image;
+
+    let imageBox = document.getElementById("hfpRandomImage");
+    imageBox.innerHTML = `<img class="hfp-image" src="${productImage}" alt="Random Product Image" />`;
+  } catch (error) {
+    console.error("Ürün çekme hatası:", error);
+  }
+}
+
+window.onload = fetchRandomProductImage;
 // Erkin Homepage Featured Product END
