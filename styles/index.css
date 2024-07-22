@@ -684,8 +684,8 @@
   display: flex;
 }
 .hfp-image {
-  width: 100%;
-  height: 225px;
+  width: 350px;
+  height: 350px;
 }
 .hfp-timer {
   display: flex;
@@ -705,6 +705,11 @@
 .hfp-duration:hover {
   background: #00ff66;
   color: white;
+}
+@media (max-width: 850px) {
+  .featured-product-container {
+    flex-wrap: wrap;
+  }
 }
 /* Erkin Homepage Featured Product END */
 
