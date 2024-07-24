@@ -347,17 +347,5 @@ function wpUpdateCountSeconds() {
   wpRemainingSeconds.innerHTML = `${seconds}`;
 }
 
-async function hfpRandomProductImage() {
-  let response = await fetch("https://fakestoreapi.com/products");
-  let products = await response.json();
-
-  let hfpRandomProduct = products[Math.floor(Math.random() * products.length)];
-
-  let hfpProductImage = hfpRandomProduct.image;
-
-  let hfpImageBox = document.getElementById("hfpRandomImage");
-  hfpImageBox.innerHTML = `<img class="hfp-image" src="${hfpProductImage}" alt="Random Product Image" />`;
-}
-
 window.onload = hfpRandomProductImage;
 // Erkin Homepage Featured Product END
