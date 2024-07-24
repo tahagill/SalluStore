@@ -327,15 +327,15 @@ function getBestSellingProducts(){
                   <p class="best-product-rate">(${product.rating.count})</p>
                 </div>
                 <div class="wishlist-and-cart">
-                <i class="fa-regular fa-heart" onclick="addToWishlist(${product.id})"></i>
-                <i class="fa-solid fa-cart-shopping" onClick="addToCart(${product.id})"></i>
+                <i class="fa-regular fa-heart" id="cart-heart-${product.id}" onclick="addToWishlist(${product.id})"></i>
+                <i class="fa-solid fa-cart-shopping" id="cart-shopping-${product.id}" onClick="addToCart(${product.id})"></i>
                </div>
               </div>`;
     })
     .join("");
 }
 function addToWishlist(productId) {
-
+  const cartIcon = document.getElementById(`cart-heart-${productId}`)
   wishlistProducts = JSON.parse(localStorage.getItem("wishlistProducts")) || [];
 
   const wishlistProduct = wishlistProducts.find(
@@ -353,8 +353,12 @@ function addToWishlist(productId) {
   } else {
     deleteFromWishlist(productId);
   }
+  cartIcon.classList.remove("fa-regular")
+  cartIcon.classList.add("fa-solid")
+  cartIcon.style.color="red"
 }
 function addToCart(productId) {
+  const cartIcon = document.getElementById(`cart-shopping-${productId}`)
   const cartProducts = JSON.parse(localStorage.getItem("cartProducts")) || [];
 
   const cartProduct = cartProducts.find((product) => product.id === productId);
@@ -369,6 +373,8 @@ function addToCart(productId) {
   } else {
     deleteFromCart(productId);
   }
+  cartIcon.classList.remove("fa-cart-shopping")
+  cartIcon.classList.add("fa-check")
 }
 function getStars(rating) {
   let stars = ``;
