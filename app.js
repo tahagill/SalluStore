@@ -350,12 +350,15 @@ function addToWishlist(productId) {
       "wishlistProducts",
       JSON.stringify([...wishlistProducts, { ...productToAdd, quantity: 1 }])
     );
+    cartIcon.classList.remove("fa-regular")
+    cartIcon.classList.add("fa-solid")
+    cartIcon.style.color="red"
   } else {
     deleteFromWishlist(productId);
+    cartIcon.classList.remove("fa-solid")
+    cartIcon.classList.add("fa-regular")
+    cartIcon.style.color="black"
   }
-  cartIcon.classList.remove("fa-regular")
-  cartIcon.classList.add("fa-solid")
-  cartIcon.style.color="red"
 }
 function addToCart(productId) {
   const cartIcon = document.getElementById(`cart-shopping-${productId}`)
@@ -376,6 +379,25 @@ function addToCart(productId) {
   cartIcon.classList.remove("fa-cart-shopping")
   cartIcon.classList.add("fa-check")
 }
+function deleteFromWishlist(deletedProductId) {
+  const wishlistProducts =
+    JSON.parse(localStorage.getItem("wishlistProducts")) || [];
+  const filteredProducts = wishlistProducts.filter(
+    (product) => product.id !== deletedProductId
+  );
+  localStorage.setItem("wishlistProducts", JSON.stringify(filteredProducts));
+  addToWishCount();
+}
+function deleteFromCart(deletedProductId) {
+
+  const cartProducts = JSON.parse(localStorage.getItem("cartProducts")) || [];
+  const filteredProducts = cartProducts.filter(
+    (product) => product.id !== deletedProductId
+  );
+  localStorage.setItem("cartProducts", JSON.stringify(filteredProducts));
+  addToCartCount();
+}
+
 function getStars(rating) {
   let stars = ``;
   for (let i = 0; i < rating.toFixed(0); i++) {
