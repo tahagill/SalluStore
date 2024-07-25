@@ -333,6 +333,23 @@ function getBestSellingProducts(){
               </div>`;
     })
     .join("");
+
+    setHeartIcons();
+    setCartIcons();
+}
+function setHeartIcons() {
+  const wishlistProducts =
+    JSON.parse(localStorage.getItem("wishlistProducts")) || [];
+  wishlistProducts.forEach((product) => {
+    if (product.id) {
+      const heartIcon = document.getElementById(`cart-heart-${product.id}`);
+      if (heartIcon) {
+        cartIcon.classList.remove("fa-regular")
+        cartIcon.classList.add("fa-solid")
+        cartIcon.style.color="red"
+      }
+    }
+  });
 }
 function addToWishlist(productId) {
   const cartIcon = document.getElementById(`cart-heart-${productId}`)
