@@ -667,12 +667,7 @@
   color: #000000;
 }
 .hna-grid-container {
-  --gap: 16px;
-  --num-cols: 4;
-  --row-height: 300px;
-
-  padding: var(-gap);
-
+  padding-top: 50px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: 300px;
@@ -681,22 +676,40 @@
     width: 100%;
     height: 100%;
   }
-  padding-top: 50px;
 }
-
-.hna-ps5 {
+.hna-box {
+  position: relative;
+}
+.hna-ps5-box {
   background-color: #000000;
   grid-column: span 2;
   grid-row: span 2;
 }
-.hna-women {
+.hna-women-box {
   grid-column: span 2;
 }
-.hna-speakers {
+.hna-speaker-box {
   background-color: #000000;
 }
-.hna-perfume {
+.hna-perfume-box {
   background-color: #000000;
+}
+.hna-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #000;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  border-bottom: 4px solid white;
+}
+.hna-text {
+  position: absolute;
+  bottom: 24px;
+  left: 23px;
+  right: 23px;
+  color: #fafafa;
 }
 .hna-bottom-container {
   display: flex;
