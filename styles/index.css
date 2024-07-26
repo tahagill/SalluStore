@@ -684,6 +684,7 @@
 }
 .hfp-img {
   width: clamp(300px, 50vw, 575px);
+  filter: drop-shadow(0 0 100px grey);
 }
 .hfp-timer {
   display: flex;
