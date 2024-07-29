@@ -301,7 +301,7 @@ function makeDiscountPrice(price, discount) {
 
 
 const bestproducts = document.querySelector("#bestProductsContainer");
-async function getProducts(){
+async function getRefreshedPage(){
   try{
     const response = await fetch("https://fakestoreapi.com/products");
     const data = await response.json();
@@ -311,7 +311,7 @@ async function getProducts(){
     console.error("Hata oluştu.", error);
   }
 }
-getProducts();
+getRefreshedPage();
 function getBestSellingProducts(){
     const firstProducts = allProducts.slice(0,4);
     bestproducts.innerHTML = firstProducts.map((product)=>{
@@ -337,18 +337,38 @@ function getBestSellingProducts(){
     setHeartIcons();
     setCartIcons();
 }
-function setHeartIcons() {
+function setHeartIcons(productId) {
   const wishlistProducts =
     JSON.parse(localStorage.getItem("wishlistProducts")) || [];
   wishlistProducts.forEach((product) => {
-    if (product.id) {
-      const heartIcon = document.getElementById(`cart-heart-${product.id}`);
+    productId=product.id
+    const heartIcon = document.getElementById(`cart-heart-${productId}`);
       if (heartIcon) {
-        cartIcon.classList.remove("fa-regular")
-        cartIcon.classList.add("fa-solid")
-        cartIcon.style.color="red"
+        heartIcon.classList.remove("fa-regular")
+        heartIcon.classList.add("fa-solid")
+        heartIcon.style.color="red"
       }
-    }
+      else{
+        heartIcon.classList.remove("fa-solid")
+        heartIcon.classList.add("fa-regular")
+        heartIcon.style.color="black"
+      }
+  });
+}
+function setCartIcons(productId) {
+  const cartProducts =
+    JSON.parse(localStorage.getItem("cartProducts")) || [];
+    cartProducts.forEach((product) => {
+    productId=product.id
+    const cartIcon = document.getElementById(`cart-shopping-${productId}`);
+      if (cartIcon) {
+        cartIcon.classList.remove("fa-cart-shopping")
+        cartIcon.classList.add("fa-check")
+      }
+      else{
+        cartIcon.classList.remove("fa-check")
+        cartIcon.classList.add("fa-cart-shopping")
+      }
   });
 }
 function addToWishlist(productId) {
@@ -377,6 +397,7 @@ function addToWishlist(productId) {
     cartIcon.style.color="black"
   }
 }
+
 function addToCart(productId) {
   const cartIcon = document.getElementById(`cart-shopping-${productId}`)
   const cartProducts = JSON.parse(localStorage.getItem("cartProducts")) || [];
@@ -390,11 +411,15 @@ function addToCart(productId) {
       "cartProducts",
       JSON.stringify([...cartProducts, { ...productToAdd, quantity: 1 }])
     );
+
+    cartIcon.classList.remove("fa-cart-shopping")
+    cartIcon.classList.add("fa-check")
   } else {
     deleteFromCart(productId);
+    cartIcon.classList.remove("fa-check")
+    cartIcon.classList.add("fa-cart-shopping")
   }
-  cartIcon.classList.remove("fa-cart-shopping")
-  cartIcon.classList.add("fa-check")
+
 }
 function deleteFromWishlist(deletedProductId) {
   const wishlistProducts =
@@ -403,7 +428,6 @@ function deleteFromWishlist(deletedProductId) {
     (product) => product.id !== deletedProductId
   );
   localStorage.setItem("wishlistProducts", JSON.stringify(filteredProducts));
-  addToWishCount();
 }
 function deleteFromCart(deletedProductId) {
 
@@ -412,7 +436,6 @@ function deleteFromCart(deletedProductId) {
     (product) => product.id !== deletedProductId
   );
   localStorage.setItem("cartProducts", JSON.stringify(filteredProducts));
-  addToCartCount();
 }
 
 function getStars(rating) {
