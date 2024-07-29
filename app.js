@@ -299,3 +299,53 @@ function makeDiscountPrice(price, discount) {
 }
 
 //Flash Sale End
+// Erkin Homepage Featured Product START
+const wpCountdownDate = new Date().getTime() + 4 * 24 * 60 * 60 * 1000;
+
+const wpRemainingDays = document.getElementById("hfpRemainingDays");
+const wpRemainingHours = document.getElementById("hfpRemainingHours");
+const wpRemainingMinutes = document.getElementById("hfpRemainingMinutes");
+const wpRemainingSeconds = document.getElementById("hfpRemainingSeconds");
+wpUpdateCountDays();
+wpUpdateCountHours();
+wpUpdateCountMinutes();
+wpUpdateCountSeconds();
+
+setInterval(wpUpdateCountDays, 1000);
+setInterval(wpUpdateCountHours, 1000);
+setInterval(wpUpdateCountMinutes, 1000);
+setInterval(wpUpdateCountSeconds, 1000);
+
+function wpUpdateCountDays() {
+  const now = new Date().getTime();
+  const distance = wpCountdownDate - now;
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  wpRemainingDays.innerHTML = `0${days}`;
+}
+function wpUpdateCountHours() {
+  const now = new Date().getTime();
+  const distance = wpCountdownDate - now;
+
+  const hours = Math.floor(
+    (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+  );
+  wpRemainingHours.innerHTML = `${hours}`;
+}
+function wpUpdateCountMinutes() {
+  const now = new Date().getTime();
+  const distance = wpCountdownDate - now;
+
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  wpRemainingMinutes.innerHTML = `${minutes}`;
+}
+function wpUpdateCountSeconds() {
+  const now = new Date().getTime();
+  const distance = wpCountdownDate - now;
+
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  wpRemainingSeconds.innerHTML = `${seconds}`;
+}
+
+window.onload = hfpRandomProductImage;
+// Erkin Homepage Featured Product END
