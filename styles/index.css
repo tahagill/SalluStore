@@ -667,10 +667,11 @@
   color: #000000;
 }
 .new-arrivals-container {
+  max-width: 1300px;
+  width: 100%;
   padding-top: 50px;
   display: flex;
   gap: 30px;
-  flex-wrap: wrap;
 }
 .hna-bottom-container {
   flex-wrap: wrap;
@@ -679,17 +680,20 @@
   background: url("../images/playstation5.png") no-repeat;
   background-color: #000000;
   background-position: center bottom;
-  width: 570px;
+  background-size: contain;
+  width: 100%;
   height: 600px;
   display: flex;
   align-items: end;
+  flex: 1;
   padding-left: 25px;
   padding-bottom: 35px;
 }
-.hna-ps5-title-box {
+.hna-titles-box {
   color: #fafafa;
   width: 242px;
   height: 122px;
+  padding: 15px 10px;
   h2 {
     padding-bottom: 15px;
     font-family: "Inter", sans-serif;
@@ -704,40 +708,26 @@
     line-height: 21px;
   }
 }
+
 .hna-images-box {
   display: flex;
   flex-direction: column;
+  flex: 1;
   gap: 30px;
 }
 .hna-women-box {
   background: url("../images/woman-with-hat.png") no-repeat;
   background-color: #000000;
   background-position: center right;
-  width: 570px;
+  background-size: contain;
+  width: 100%;
   height: 284px;
   display: flex;
   align-items: end;
   padding-left: 25px;
   padding-bottom: 35px;
 }
-.hna-women-title-box {
-  color: #fafafa;
-  width: 255px;
-  height: 122px;
-  h2 {
-    padding-bottom: 15px;
-    font-family: "Inter", sans-serif;
-    font-weight: 600;
-    font-size: clamp(12px, 1vw, 24px);
-    line-height: 24px;
-  }
-  p {
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 21px;
-  }
-}
+
 .hna-bottom-images-box {
   display: flex;
   gap: 30px;
@@ -746,60 +736,28 @@
   background: url("../images/speakers.png") no-repeat;
   background-color: #000000;
   background-position: center;
-  width: 270px;
+  background-size: contain;
+  width: 100%;
   height: 284px;
   display: flex;
   align-items: end;
   padding-left: 25px;
   padding-bottom: 40px;
 }
-.hna-speakers-title-box {
-  color: #fafafa;
-  width: 191px;
-  height: 85px;
-  h2 {
-    padding-bottom: 8px;
-    font-family: "Inter", sans-serif;
-    font-weight: 600;
-    font-size: clamp(12px, 1vw, 24px);
-    line-height: 24px;
-  }
-  p {
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 21px;
-  }
-}
+
 .hna-perfume-box {
   background: url("../images/gucci-perfume.png") no-repeat;
   background-color: #000000;
   background-position: center;
-  width: 270px;
+  background-size: contain;
+  width: 100%;
   height: 284px;
   display: flex;
   align-items: end;
   padding-left: 25px;
   padding-bottom: 40px;
 }
-.hna-perfume-title-box {
-  color: #fafafa;
-  width: 191px;
-  height: 85px;
-  h2 {
-    padding-bottom: 8px;
-    font-family: "Inter", sans-serif;
-    font-weight: 600;
-    font-size: clamp(12px, 1vw, 24px);
-    line-height: 24px;
-  }
-  p {
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 21px;
-  }
-}
+
 .hna-btn {
   display: inline-block;
   margin-top: 10px;
@@ -829,9 +787,13 @@
   border: 10px solid #b4b4b8;
   margin-bottom: 15px;
 }
-@media (max-width: 1205px) {
+
+@media (max-width: 900px) {
   .new-arrivals-container {
-    justify-content: center;
+    flex-direction: column;
+  }
+  .hna-ps5-box {
+    flex: none;
   }
 }
 @media (max-width: 650px) {
@@ -841,17 +803,11 @@
   .new-arrivals-container {
     padding-left: 10px;
   }
-
-  .hna-ps5-box {
-    background-size: contain;
-    height: 100%;
-  }
 }
-@media (max-width: 575px) {
-  .hna-ps5-title-box {
-    width: 175px;
-    margin-left: 0;
-    margin-top: 45px;
+
+@media (max-width: 490px) {
+  .hna-bottom-images-box {
+    flex-direction: column;
   }
 }
 /* Erkin Homepage New Arrivals END */
