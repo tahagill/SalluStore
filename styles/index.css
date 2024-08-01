@@ -731,7 +731,197 @@
   }
 }
 /* Erkin Homepage Featured Product END */
+/* Erkin Homepage New Arrivals START */
+.homepage-new-arrivals {
+  max-width: 1300px;
+  margin: 50px auto;
+}
+.homepage-new-arrivals * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.hna-logo-container {
+  width: 216px;
+  height: 108px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.hna-logo {
+  width: 110px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hna-back {
+  background-color: #db4444;
+  width: clamp(15px, 2vw, 20px);
+  height: 40px;
+  border-radius: 4px;
+}
+.hna-logo-title {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: clamp(12px, 2vw, 16px);
+  line-height: 20px;
+  color: #db4444;
+}
+.hna-title {
+  width: 216px;
+  height: 48px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: clamp(20px, 3vw, 36px);
+  line-height: 48px;
+  color: #000000;
+}
+.new-arrivals-container {
+  max-width: 1300px;
+  width: 100%;
+  padding-top: 50px;
+  display: flex;
+  gap: 30px;
+}
+.hna-bottom-container {
+  flex-wrap: wrap;
+}
+.hna-ps5-box {
+  background: url("../images/playstation5.png") no-repeat;
+  background-color: #000000;
+  background-position: center bottom;
+  background-size: contain;
+  width: 100%;
+  height: 600px;
+  display: flex;
+  align-items: end;
+  flex: 1;
+  padding-left: 25px;
+  padding-bottom: 35px;
+}
+.hna-titles-box {
+  color: #fafafa;
+  width: 242px;
+  height: 122px;
+  padding: 15px 10px;
+  h2 {
+    padding-bottom: 15px;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: clamp(12px, 1vw, 24px);
+    line-height: 24px;
+  }
+  p {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: clamp(10px, 2vw, 14px);
+    line-height: 21px;
+  }
+}
 
+.hna-images-box {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 30px;
+}
+.hna-women-box {
+  background: url("../images/woman-with-hat.png") no-repeat;
+  background-color: #000000;
+  background-position: center right;
+  background-size: contain;
+  width: 100%;
+  height: 284px;
+  display: flex;
+  align-items: end;
+  padding-left: 25px;
+  padding-bottom: 35px;
+}
+
+.hna-bottom-images-box {
+  display: flex;
+  gap: 30px;
+}
+.hna-speakers-box {
+  background: url("../images/speakers.png") no-repeat;
+  background-color: #000000;
+  background-position: center;
+  background-size: contain;
+  width: 100%;
+  height: 284px;
+  display: flex;
+  align-items: end;
+  padding-left: 25px;
+  padding-bottom: 40px;
+}
+
+.hna-perfume-box {
+  background: url("../images/gucci-perfume.png") no-repeat;
+  background-color: #000000;
+  background-position: center;
+  background-size: contain;
+  width: 100%;
+  height: 284px;
+  display: flex;
+  align-items: end;
+  padding-left: 25px;
+  padding-bottom: 40px;
+}
+
+.hna-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 4px;
+  border-bottom: 2px solid white;
+}
+
+.hna-bottom-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  padding-top: 80px;
+}
+.hna-box-container {
+  text-align: center;
+  h3 {
+    margin-bottom: 10px;
+  }
+}
+.hna-icon {
+  background: #000000;
+  border-radius: 50%;
+  border: 10px solid #b4b4b8;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 900px) {
+  .new-arrivals-container {
+    flex-direction: column;
+  }
+  .hna-ps5-box {
+    flex: none;
+  }
+}
+@media (max-width: 650px) {
+  .hna-logo-container {
+    padding-left: 15px;
+  }
+  .new-arrivals-container {
+    padding-left: 10px;
+  }
+}
+
+@media (max-width: 490px) {
+  .hna-bottom-images-box {
+    flex-direction: column;
+  }
+}
+/* Erkin Homepage New Arrivals END */
 /* MA-8 */
 
 .footer-section {
