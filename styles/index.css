@@ -1,3 +1,7 @@
+body {
+  overflow-x: hidden;
+}
+
 /* Erkin Homepage Header START */
 .homepage-header {
   margin-bottom: 50px;
@@ -406,10 +410,6 @@
   border-radius: 4px;
   transition: transform 0.5s ease;
 }
-.homepage-browse-category {
-  margin: 0 auto;
-  max-width: 1300px;
-}
 
 /* Umut Start Today's Product*/
 .todaysProduct {
@@ -619,6 +619,240 @@
 }
 
 /* Umut Start Today's Product*/
+.homepage-title-boxes {
+  display: flex;
+  align-items: center;
+  margin-top: 90px;
+  margin-bottom: 20px;
+}
+.homepage-title-boxes div {
+  width: 20px;
+  height: 40px;
+  background-color: #db4444;
+  margin-right: 10px;
+  border-radius: 4px;
+}
+.homepage-title-boxes h4 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  color: #db4444;
+  font-size: 16px;
+}
+.browse-by-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 70px;
+}
+.browse-by-container {
+  font-family: "Poppins", sans-serif;
+}
+.category-boxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding-bottom: 80px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+.category-box {
+  height: 175px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  transition: transform 0.5s ease;
+}
+.homepage-browse-category {
+  margin: 0 auto;
+  max-width: 1300px;
+}
+.best-selling-products-container {
+  max-width: 1170px;
+  margin-inline: auto;
+}
+
+.best-selling-time {
+  display: flex;
+  gap: 16px;
+}
+
+.first-title {
+  color: #db4444;
+  font-family: Poppins, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  text-align: left;
+}
+.main-title {
+  font-family: Inter, sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 48px;
+  text-align: left;
+}
+.title-box {
+  display: flex;
+  justify-content: space-between;
+}
+.pro-button {
+  padding: 12px 24px 12px 24px;
+  background-color: #db4444;
+  border: #db4444;
+  width: 159px;
+  height: 56px;
+  color: aliceblue;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: center;
+  border-radius: 5px;
+}
+.boxes-container {
+  width: 1, 170px;
+  height: 350px;
+  gap: 30px;
+}
+.product-card {
+  width: 270px;
+  gap: 16px;
+  position: relative;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+}
+.product-image-bg {
+  height: 270px;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.product-image {
+  margin-inline: auto;
+  width: 140px;
+  object-fit: cover;
+}
+.product-image-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.product-heart,
+.product-eyes {
+  background-color: white;
+  padding: 12px;
+  clip-path: circle();
+  width: 24px;
+}
+.product-title {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 12px 0 0 0;
+}
+.product-all-prices {
+  font-weight: 500;
+  display: flex;
+  gap: 10px;
+}
+.product-price {
+  color: #db4444;
+}
+.product-preprice {
+  color: gray;
+  text-decoration: line-through;
+}
+.product-review-counter {
+  color: gray;
+  font-weight: 600px;
+}
+.all-product-cards {
+  display: flex;
+  justify-content: space-between;
+}
+.best-products-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 50px;
+  margin-top: 40px;
+}
+.best-selling-product {
+  margin: 0 auto;
+  max-width: 1300px;
+}
+.homepage-title-boxes2 {
+  display: flex;
+  gap: 10px;
+}
+.rectangle {
+  width: 20px;
+  height: 40px;
+  border-radius: 4px;
+  background-color: #db4444;
+}
+.homepage-title {
+  color: #db4444;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+}
+.homepage-title-boxes3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.homepage-title2 {
+  font-size: 32px;
+  font-weight: 600;
+}
+.view-button {
+  padding: 16px 48px;
+  border-radius: 4px;
+  background-color: #db4444;
+  color: antiquewhite;
+}
+
+.best-products {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  color: black;
+  position: relative;
+  padding: 35px;
+}
+.best-products-img {
+  width: 100%;
+  height: 250px;
+}
+.best-products-title {
+  overflow: hidden;
+  width: 100%;
+  font-size: 16px;
+}
+.best-product-prices-container {
+  display: flex;
+  gap: 15px;
+  font-size: 16px;
+  font-weight: 500;
+  align-items: center;
+}
+.best-product-price-discounted {
+  color: #db4444;
+}
+.best-product-price {
+  opacity: 50%;
+}
+.best-products-rate {
+  display: flex;
+  gap: 20px;
+}
 
 /* Erkin Homepage Featured Product START */
 .homepage-featured-product {
@@ -1002,3 +1236,64 @@ ul {
 }
 
 /* Umut End Today's Product*/
+
+.homepage-title-boxes2 {
+  display: flex;
+  gap: 10px;
+}
+.rectangle {
+  width: 20px;
+  height: 40px;
+  border-radius: 4px;
+  background-color: #db4444;
+}
+.homepage-title {
+  color: #db4444;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+}
+.homepage-title-boxes3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.homepage-title2 {
+  font-size: 32px;
+  font-weight: 600;
+}
+.view-button {
+  padding: 16px 48px;
+  border-radius: 4px;
+  background-color: #db4444;
+  color: antiquewhite;
+}
+
+.best-products {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  color: black;
+  position: relative;
+  padding: 35px;
+}
+.best-products-img {
+  width: 100%;
+  object-fit: contain;
+  height: 250px;
+}
+.best-products-title {
+  overflow: hidden;
+  width: 100%;
+  font-size: 16px;
+}
+.wishlist-and-cart {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  gap: 10px;
+  width: 30px;
+  top: 0px;
+  right: 0px;
+  cursor: pointer;
+}
