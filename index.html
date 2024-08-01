@@ -57,8 +57,8 @@
           <a href="cart.html"><img src="images/cart-icon.svg" alt="" /></a>
         </div>
         <li class="hh-menu-button">
-          <a href=""
-            ><svg
+          <a href="">
+            <svg
               xmlns="http://www.w3.org/2000/svg"
               height="26px"
               viewBox="0 -960 960 960"
@@ -67,7 +67,9 @@
             >
               <path
                 d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"
-              /></svg></a>
+              />
+            </svg>
+          </a>
         </li>
         <ul class="hh-links hh-links-copy">
           <li class="hh-close-button">
@@ -81,7 +83,9 @@
               >
                 <path
                   d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"
-                /></svg></a>
+                />
+              </svg>
+            </a>
           </li>
           <li><a href="">Home</a></li>
           <li><a href="">Contact</a></li>
@@ -301,73 +305,182 @@
       <div class="homepage-title-boxes2">
         <div class="rectangle"></div>
         <p class="homepage-title">This Month</p>
-       </div>
-       <div class="homepage-title-boxes3">
+      </div>
+      <div class="homepage-title-boxes3">
         <p class="homepage-title2">Best Selling Products</p>
         <button class="view-button">View All</button>
       </div>
-    <div class="best-products-container" id="bestProductsContainer">
+      <div class="best-products-container" id="bestProductsContainer"></div>
+    </div>
+    <!--Erkin Homepage Featured Product START-->
+    <div class="homepage-featured-product">
+      <div class="featured-product-container">
+        <div class="hfp-title-box">
+          <h6 class="hfp-subtitle">Categories</h6>
+          <h2 class="hfp-title">Enhance Your Music Experience</h2>
+          <div class="hfp-timer">
+            <div class="hfp-days hfp-duration">
+              <h2 id="hfpRemainingDays"></h2>
+              <p class="hfp-date">Days</p>
+            </div>
+            <div class="hfp-hours hfp-duration">
+              <h2 id="hfpRemainingHours"></h2>
+              <p class="hfp-date">Hours</p>
+            </div>
+            <div class="hfp-minutes hfp-duration">
+              <h2 id="hfpRemainingMinutes"></h2>
+              <p class="hfp-date">Minutes</p>
+            </div>
+            <div class="hfp-seconds hfp-duration">
+              <h2 id="hfpRemainingSeconds"></h2>
+              <p class="hfp-date">Seconds</p>
+            </div>
+          </div>
+          <button class="hfp-btn" id="hfpButton">Buy Now</button>
+        </div>
+        <div class="hfp-img-box" id="hfpRandomImage">
+          <img class="hfp-img" src="./images/speaker.png" alt="" />
+        </div>
+      </div>
+    </div>
+    <!--Erkin Homepage Featured Product END-->
+    <!-- Erkin Homepage New Arrivals START-->
+    <div class="homepage-new-arrivals">
+      <div class="hna-logo-container">
+        <div class="hna-logo">
+          <div class="hna-back"></div>
+          <div class="hna-logo-title">Featured</div>
+        </div>
+        <div class="hna-title">New Arrival</div>
+      </div>
+      <div class="new-arrivals-container">
+        <div class="hna-ps5-box">
+          <div class="hna-ps5-title-box hna-titles-box">
+            <h2>PlayStation 5</h2>
+            <p>Black and White version of the PS5 coming out on sale.</p>
+            <a href="#" class="hna-btn">Shop Now</a>
+          </div>
+        </div>
+        <div class="hna-images-box">
+          <div class="hna-women-box">
+            <div class="hna-women-title-box hna-titles-box">
+              <h2>Women's Collections</h2>
+              <p>Featured woman collections that give you another vibe.</p>
+              <a href="#" class="hna-btn">Shop Now</a>
+            </div>
+          </div>
+          <div class="hna-bottom-images-box">
+            <div class="hna-speakers-box">
+              <div class="hna-speakers-title-box hna-titles-box">
+                <h2>Speakers</h2>
+                <p>Amazon wireless speakers.</p>
+                <a href="#" class="hna-btn">Shop Now</a>
+              </div>
+            </div>
+            <div class="hna-perfume-box">
+              <div class="hna-perfume-title-box hna-titles-box">
+                <h2>Perfume</h2>
+                <p>GUCCI INTENSE OUD EDP</p>
+                <a href="#" class="hna-btn">Shop Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hna-bottom-container">
+        <div class="hna-box-container">
+          <img class="hna-icon" src="./images/icon-delivery.png" alt="" />
+          <h3>FREE AND FAST DELIVERY</h3>
+          <h6>Free delivery for all orders over $140</h6>
+        </div>
+        <div class="hna-box-container">
+          <img
+            class="hna-icon"
+            src="./images/icon-customer-service.png"
+            alt=""
+          />
+          <h3>24/7 CUSTOMER SERVICE</h3>
+          <h6>Friendly 24/7 customer support</h6>
+        </div>
+        <div class="hna-box-container">
+          <img class="hna-icon" src="./images/icon-secure.png" alt="" />
+          <h3>MONEY BACK GUARANTEE</h3>
+          <h6>We reurn money within 30 days</h6>
+        </div>
+      </div>
+    </div>
+    <!-- Erkin Homepage New Arrivals END-->
+    <footer class="footer-section">
+      <div class="footer-top">
+        <ul class="f-ul-1">
+          <h3>Exclusive</h3>
+          <li class="x"><strong>Subscribe</strong></li>
+          <li class="x">Get 10% off your first order</li>
+          <div class="input-container">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              class="email-input"
+            />
+            <button class="submit-button">&#10148;</button>
+          </div>
+        </ul>
+        <ul class="f-ul-2">
+          <h3>Support</h3>
+          <li class="x">
+            A1 Gulberg, Lahore,<br />
+            DH 1515, Pakistan.
+          </li>
+          <li class="x">exclusive@gmail.com</li>
+          <li class="x">+90-534418815-1</li>
+        </ul>
 
+        <ul class="f-ul-3">
+          <h3>Account</h3>
+          <li class="x">My Account</li>
+          <li class="x">Login / Register</li>
+          <li class="x">Cart</li>
+          <li class="x">Wishlist</li>
+          <li class="x">Shop</li>
+        </ul>
+        <ul class="f-ul-4">
+          <h3>Quick Link</h3>
+          <li class="x">Privacy Policy</li>
+          <li class="x">Terms Of Use</li>
+          <li class="x">FAQ</li>
+          <li class="x">Contact</li>
+        </ul>
+        <ul class="f-ul-5">
+          <h3>Download App</h3>
+          <li class="x">Save $3 with app new users only</li>
+          <div class="appQR-div">
+            <div class="appQR-left">
+              <img class="qr-code-img" src="images/Qrcode 1.svg" />
+            </div>
+            <div class="appQR-right">
+              <img class="google-img" src="images/google-icon.svg" />
+              <img class="apple-img" src="images/appstroe-icon.svg" />
+            </div>
+          </div>
+          <div class="f-logos-container">
+            <img class="fb-img" src="images/fb-vector.svg" />
+            <img class="twitter-img" src="images/twitter-icon.svg" />
+            <img class="ig-img" src="images/ig-icon.svg" />
+            <img class="linkedin-img" src="images/linkedin-icon.svg" />
+          </div>
+        </ul>
+      </div>
+      <div class="footer-bottom">
+        <span
+          ><img class="copy-vector" src="images/icon-copyright.svg" />
+          <p>Copyright Rimel 2022. All right reserved</p></span
+        >
+      </div>
+    </footer>
     <script src="app.js"></script>
-    <script src="https://kit.fontawesome.com/c43fbeed54.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/c43fbeed54.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
-
-  <footer class="footer-section">
-    <div class="footer-top">
-      <ul class="f-ul-1">
-        <h3>Exclusive</h3>
-        <li class="x"><strong>Subscribe</strong></li>
-        <li class="x">Get 10% off your first order</li>
-        <div class="input-container">
-          <input type="email" placeholder="Enter your email" class="email-input">
-          <button class="submit-button">&#10148;</button>
-        </div>
-        
-      </ul>
-      <ul class="f-ul-2">
-        <h3>Support</h3>
-        <li class="x">A1 Gulberg, Lahore,<br>  DH 1515, Pakistan.</li>
-        <li class="x">exclusive@gmail.com</li>
-        <li class="x">+90-534418815-1</li>
-      </ul>
-
-      <ul class="f-ul-3">
-        <h3>Account</h3>
-        <li class="x">My Account</li>
-        <li class="x">Login / Register</li>
-        <li class="x">Cart</li>
-        <li class="x">Wishlist</li>
-        <li class="x">Shop</li>
-      </ul>
-      <ul class="f-ul-4">
-        <h3>Quick Link</h3>
-        <li class="x">Privacy Policy</li>
-        <li class="x">Terms Of Use</li>
-        <li class="x">FAQ</li>
-        <li class="x">Contact</li>
-      </ul>
-      <ul class="f-ul-5">
-        <h3>Download App</h3>
-        <li class="x">Save $3 with app new users only</li>
-        <div class="appQR-div">
-          <div class="appQR-left">
-            <img class="qr-code-img" src="images/Qrcode 1.svg">
-          </div>
-          <div class="appQR-right">
-            <img class="google-img" src="images/google-icon.svg">
-            <img class="apple-img" src="images/appstroe-icon.svg">
-          </div>
-        </div>
-        <div class="f-logos-container">
-          <img class="fb-img" src="images/fb-vector.svg">
-          <img class="twitter-img" src="images/twitter-icon.svg">
-          <img class="ig-img" src="images/ig-icon.svg">
-          <img class="linkedin-img" src="images/linkedin-icon.svg">
-        </div>
-      </ul>
-    </div>
-    <div class="footer-bottom">
-      <span><img class="copy-vector" src="images/icon-copyright.svg"><p>Copyright Rimel 2022. All right reserved</p></span>
-    </div>
-  </footer>
 </html>

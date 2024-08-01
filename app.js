@@ -276,7 +276,8 @@ const initSlider = () => {
       if (button.id === "prevButton") {
         direction = -1;
       } else {
-        direction = 1;      }
+        direction = 1;
+      }
       const scrollAmount = productList.clientWidth * direction;
       productList.scrollBy({ left: scrollAmount, behavior: "smooth" });
     });
@@ -299,27 +300,31 @@ function makeDiscountPrice(price, discount) {
 
 //Flash Sale End
 
-
 const bestproducts = document.querySelector("#bestProductsContainer");
-async function getRefreshedPage(){
-  try{
+async function getRefreshedPage() {
+  try {
     const response = await fetch("https://fakestoreapi.com/products");
     const data = await response.json();
-    allProducts= data;
+    allProducts = data;
     getBestSellingProducts();
-  } catch (error){
+  } catch (error) {
     console.error("Hata oluştu.", error);
   }
 }
 getRefreshedPage();
-function getBestSellingProducts(){
-    const firstProducts = allProducts.slice(0,4);
-    bestproducts.innerHTML = firstProducts.map((product)=>{
+function getBestSellingProducts() {
+  const firstProducts = allProducts.slice(0, 4);
+  bestproducts.innerHTML = firstProducts
+    .map((product) => {
       return `<div class="best-products">
-                <img class="best-products-img" src="${product.image}" alt="${product.title}">
+                <img class="best-products-img" src="${product.image}" alt="${
+        product.title
+      }">
                 <h3 class="best-products-title">${product.title}</h3>
                 <div class="best-product-prices-container">
-                  <p class="best-product-price-discounted">$${(product.price*0.3).toFixed(2)}</p>
+                  <p class="best-product-price-discounted">$${(
+                    product.price * 0.3
+                  ).toFixed(2)}</p>
                   <s class="best-product-price">$${product.price}</s>
                 </div>
                 <div class="best-products-rate">
@@ -327,52 +332,53 @@ function getBestSellingProducts(){
                   <p class="best-product-rate">(${product.rating.count})</p>
                 </div>
                 <div class="wishlist-and-cart">
-                <i class="fa-regular fa-heart" id="cart-heart-${product.id}" onclick="addToWishlist(${product.id})"></i>
-                <i class="fa-solid fa-cart-shopping" id="cart-shopping-${product.id}" onClick="addToCart(${product.id})"></i>
+                <i class="fa-regular fa-heart" id="cart-heart-${
+                  product.id
+                }" onclick="addToWishlist(${product.id})"></i>
+                <i class="fa-solid fa-cart-shopping" id="cart-shopping-${
+                  product.id
+                }" onClick="addToCart(${product.id})"></i>
                </div>
               </div>`;
     })
     .join("");
 
-    setHeartIcons();
-    setCartIcons();
+  setHeartIcons();
+  setCartIcons();
 }
 function setHeartIcons(productId) {
   const wishlistProducts =
     JSON.parse(localStorage.getItem("wishlistProducts")) || [];
   wishlistProducts.forEach((product) => {
-    productId=product.id
+    productId = product.id;
     const heartIcon = document.getElementById(`cart-heart-${productId}`);
-      if (heartIcon) {
-        heartIcon.classList.remove("fa-regular")
-        heartIcon.classList.add("fa-solid")
-        heartIcon.style.color="red"
-      }
-      else{
-        heartIcon.classList.remove("fa-solid")
-        heartIcon.classList.add("fa-regular")
-        heartIcon.style.color="black"
-      }
+    if (heartIcon) {
+      heartIcon.classList.remove("fa-regular");
+      heartIcon.classList.add("fa-solid");
+      heartIcon.style.color = "red";
+    } else {
+      heartIcon.classList.remove("fa-solid");
+      heartIcon.classList.add("fa-regular");
+      heartIcon.style.color = "black";
+    }
   });
 }
 function setCartIcons(productId) {
-  const cartProducts =
-    JSON.parse(localStorage.getItem("cartProducts")) || [];
-    cartProducts.forEach((product) => {
-    productId=product.id
+  const cartProducts = JSON.parse(localStorage.getItem("cartProducts")) || [];
+  cartProducts.forEach((product) => {
+    productId = product.id;
     const cartIcon = document.getElementById(`cart-shopping-${productId}`);
-      if (cartIcon) {
-        cartIcon.classList.remove("fa-cart-shopping")
-        cartIcon.classList.add("fa-check")
-      }
-      else{
-        cartIcon.classList.remove("fa-check")
-        cartIcon.classList.add("fa-cart-shopping")
-      }
+    if (cartIcon) {
+      cartIcon.classList.remove("fa-cart-shopping");
+      cartIcon.classList.add("fa-check");
+    } else {
+      cartIcon.classList.remove("fa-check");
+      cartIcon.classList.add("fa-cart-shopping");
+    }
   });
 }
 function addToWishlist(productId) {
-  const cartIcon = document.getElementById(`cart-heart-${productId}`)
+  const cartIcon = document.getElementById(`cart-heart-${productId}`);
   wishlistProducts = JSON.parse(localStorage.getItem("wishlistProducts")) || [];
 
   const wishlistProduct = wishlistProducts.find(
@@ -387,19 +393,19 @@ function addToWishlist(productId) {
       "wishlistProducts",
       JSON.stringify([...wishlistProducts, { ...productToAdd, quantity: 1 }])
     );
-    cartIcon.classList.remove("fa-regular")
-    cartIcon.classList.add("fa-solid")
-    cartIcon.style.color="red"
+    cartIcon.classList.remove("fa-regular");
+    cartIcon.classList.add("fa-solid");
+    cartIcon.style.color = "red";
   } else {
     deleteFromWishlist(productId);
-    cartIcon.classList.remove("fa-solid")
-    cartIcon.classList.add("fa-regular")
-    cartIcon.style.color="black"
+    cartIcon.classList.remove("fa-solid");
+    cartIcon.classList.add("fa-regular");
+    cartIcon.style.color = "black";
   }
 }
 
 function addToCart(productId) {
-  const cartIcon = document.getElementById(`cart-shopping-${productId}`)
+  const cartIcon = document.getElementById(`cart-shopping-${productId}`);
   const cartProducts = JSON.parse(localStorage.getItem("cartProducts")) || [];
 
   const cartProduct = cartProducts.find((product) => product.id === productId);
@@ -412,14 +418,13 @@ function addToCart(productId) {
       JSON.stringify([...cartProducts, { ...productToAdd, quantity: 1 }])
     );
 
-    cartIcon.classList.remove("fa-cart-shopping")
-    cartIcon.classList.add("fa-check")
+    cartIcon.classList.remove("fa-cart-shopping");
+    cartIcon.classList.add("fa-check");
   } else {
     deleteFromCart(productId);
-    cartIcon.classList.remove("fa-check")
-    cartIcon.classList.add("fa-cart-shopping")
+    cartIcon.classList.remove("fa-check");
+    cartIcon.classList.add("fa-cart-shopping");
   }
-
 }
 function deleteFromWishlist(deletedProductId) {
   const wishlistProducts =
@@ -430,7 +435,6 @@ function deleteFromWishlist(deletedProductId) {
   localStorage.setItem("wishlistProducts", JSON.stringify(filteredProducts));
 }
 function deleteFromCart(deletedProductId) {
-
   const cartProducts = JSON.parse(localStorage.getItem("cartProducts")) || [];
   const filteredProducts = cartProducts.filter(
     (product) => product.id !== deletedProductId
@@ -445,3 +449,53 @@ function getStars(rating) {
   }
   return stars;
 }
+// Erkin Homepage Featured Product START
+const wpCountdownDate = new Date().getTime() + 4 * 24 * 60 * 60 * 1000;
+
+const wpRemainingDays = document.getElementById("hfpRemainingDays");
+const wpRemainingHours = document.getElementById("hfpRemainingHours");
+const wpRemainingMinutes = document.getElementById("hfpRemainingMinutes");
+const wpRemainingSeconds = document.getElementById("hfpRemainingSeconds");
+wpUpdateCountDays();
+wpUpdateCountHours();
+wpUpdateCountMinutes();
+wpUpdateCountSeconds();
+
+setInterval(wpUpdateCountDays, 1000);
+setInterval(wpUpdateCountHours, 1000);
+setInterval(wpUpdateCountMinutes, 1000);
+setInterval(wpUpdateCountSeconds, 1000);
+
+function wpUpdateCountDays() {
+  const now = new Date().getTime();
+  const distance = wpCountdownDate - now;
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  wpRemainingDays.innerHTML = `0${days}`;
+}
+function wpUpdateCountHours() {
+  const now = new Date().getTime();
+  const distance = wpCountdownDate - now;
+
+  const hours = Math.floor(
+    (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+  );
+  wpRemainingHours.innerHTML = `${hours}`;
+}
+function wpUpdateCountMinutes() {
+  const now = new Date().getTime();
+  const distance = wpCountdownDate - now;
+
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  wpRemainingMinutes.innerHTML = `${minutes}`;
+}
+function wpUpdateCountSeconds() {
+  const now = new Date().getTime();
+  const distance = wpCountdownDate - now;
+
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  wpRemainingSeconds.innerHTML = `${seconds}`;
+}
+
+window.onload = hfpRandomProductImage;
+// Erkin Homepage Featured Product END
